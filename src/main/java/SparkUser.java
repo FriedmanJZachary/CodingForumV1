@@ -6,12 +6,9 @@ public class SparkUser {
 
         get("/hello/:name/:password", (req,res)->{
             String pass = req.params(":password");
-            System.out.println(pass);
-            return "Hello, "+ req.params(":name") + "\n";
+            String name = req.params(":name");
+            UserClass user1 = new UserClass(name, pass, "k34mlf56ewo9", "white@squirrel.com");
+            return "Hello, " + user1.getName() + "\n";
         });
     }
-
-    // I am testing a git commit
-    // adding a comment
 }
-
