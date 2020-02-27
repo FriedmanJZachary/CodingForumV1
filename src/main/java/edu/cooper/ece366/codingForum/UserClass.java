@@ -1,17 +1,15 @@
+package edu.cooper.ece366.codingForum;
+import edu.cooper.ece366.codingForum.*;
+
 public class UserClass {
     // Instance Variables
     String userName;
     String pass;
-    String id;
-    String email;
 
     // Constructor Declaration of Class
-    public UserClass(String userName, String pass, String id, String email)
-    {
+    public UserClass(String userName, String pass) {
         this.userName = userName;
         this.pass = pass;
-        this.id = id;
-        this.email = email;
     }
 
     //Name display method
