@@ -1,15 +1,19 @@
 package edu.cooper.ece366.codingForum;
 import javax.naming.directory.Attributes;
 import java.util.Hashtable;
+import spark.Request;
 import edu.cooper.ece366.*;
+import java.util.Map;
 
 public class Handlers {
-    Hashtable<UserClass, String> my_users = new Hashtable<UserClass, String>(); //User list
+    Map<String, UserClass> my_users; //User list
 
     //Handler for user creation
-    public void userHandler(String name, String pass) {
+    public void userHandler(Request req) {
+        String pass = req.params(":field2");
+        String name = req.params(":field1");
         if (1==1) {
-            my_users.put(new UserClass(name, pass),"NEWUSER");
+            my_users.put(name, new UserClass(name, pass));
         }
     }
 

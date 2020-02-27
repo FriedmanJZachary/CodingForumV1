@@ -18,10 +18,8 @@ public class SparkUser {
 
             //If 'action' has called for creation of a new user, do so and report
             if (action.contains("newUser")){
-                String pass = req.params(":field2");
-                String name = req.params(":field1");
-                myHandler.userHandler(name, pass);
-                return "Hello: New User Requested";
+                myHandler.userHandler(req);
+                return "Hello: New User Requested\n";
             }
 
             return "Hello: Nothing Happened" + "\n"; //None of the conditions were met, and so nothing was done
