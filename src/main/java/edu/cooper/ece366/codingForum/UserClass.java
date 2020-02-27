@@ -17,5 +17,4 @@ public class UserClass {
     {
         return userName;
     }
-
 }
