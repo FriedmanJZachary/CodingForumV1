@@ -1,4 +1,4 @@
-package edu.cooper.ece366.codingForum;
+package edu.cooper.ece366.codingForum.model;
 import edu.cooper.ece366.codingForum.*;
 
 public class UserClass {

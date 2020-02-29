@@ -1,4 +1,4 @@
-package edu.cooper.ece366.codingForum;
+package edu.cooper.ece366.codingForum.model;
 
 import java.sql.Timestamp;
 import java.util.HashMap;
@@ -25,7 +25,6 @@ public class PostClass {
 
         timestamp = new Timestamp(System.currentTimeMillis());
      //   likes = new Map<Integer, String>();
-
 
     }
 
