@@ -15,20 +15,37 @@ public class SparkUser {
         //Determine what to do with 3-field string
         get("/:action/:field1/:field2", (req,res)-> {
             String action = req.params(":action");
-
-            //If 'action' has called for creation of a new user, do so and report
+            //Call some handler method depending on the specified action
             if (action.contains("newUser")){
-                myHandler.userHandler(req);
-                return "Hello: New User Requested\n";
-<<<<<<< HEAD
-=======
+                String handlerReply = myHandler.userHandler(req);
+                return "Hello: New User Requested\n" + handlerReply + "\n";
+            } else if (action.contains("removeUser")){
+                System.out.print("removeUSer selected\n");
+                String handlerReply = myHandler.userRemover(req);
+                return "Hello: User Deletion Requested\n" + handlerReply + "\n";
             }
+
             else if (action.contains("answer")){
-                myHandler.answerHandler(req);
->>>>>>> Jason
+                //myHandler.answerHandler(req);
+            }
+            return "Hello: Nothing Happened" + "\n"; //None of the conditions were met, and so nothing was done
+        });
+
+
+        //Determine what to do with 4-field string
+        get("/:action/:field1/:field2/:field3", (req,res)-> {
+            String action = req.params(":action");
+            //If 'action' has called for creation of a new user, do so and report
+            if (action.contains("passChange")){
+                String handlerReply = myHandler.passChange(req);
+                return "Hello: Password Change Requested\n" + handlerReply + "\n";
             }
 
             return "Hello: Nothing Happened" + "\n"; //None of the conditions were met, and so nothing was done
         });
+
+
+
+
     }
 }
