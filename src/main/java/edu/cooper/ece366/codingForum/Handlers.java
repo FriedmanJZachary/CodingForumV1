@@ -17,5 +17,22 @@ public class Handlers {
         }
     }
 
+    public Answer createAnswer(Request request) {
+        Long answerPostID = getAnswerPostID();
+        Long askPostID = getAskPostID(request);
+        String codeFilePath = getCodeFilePath(request);
+        Answer ans = new Answer(answerPostID, askPostID, codeFilePath);
+        return service.createAnswer(ans)
+    }
+
+    private Long getAskPostID(final Request request) {
+        returnlong.valueOf(request.params(":askpostid"));
+    }
+
+    private String getCodeFilePath(final Request request) {
+        returnstring.valueOf(request.params(":codefilepath"));
+    }
+
+
 }
 
