@@ -21,6 +21,9 @@ public class SparkUser {
                 myHandler.userHandler(req);
                 return "Hello: New User Requested\n";
             }
+            else if (action.contains("answer")){
+                myHandler.answerHandler(req);
+            }
 
             return "Hello: Nothing Happened" + "\n"; //None of the conditions were met, and so nothing was done
         });
