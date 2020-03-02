@@ -2,12 +2,23 @@ package edu.cooper.ece366.codingForum;
 import edu.cooper.ece366.codingForum.model.UserClass;
 import edu.cooper.ece366.codingForum.model.PostClass;
 import edu.cooper.ece366.codingForum.model.Answer;
+import edu.cooper.ece366.codingForum.store.AnswerStore;
+import edu.cooper.ece366.codingForum.store.PostStore;
 import spark.Request;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Handlers {
     Map<String, UserClass> userList = new HashMap<String, UserClass>();
+    private final PostStore postStore;
+    private final AnswerStore answerStore;
+
+    public Handlers(PostStore postStore, AnswerStore answerStore) {
+        this.postStore = postStore;
+        this.answerStore = answerStore;
+    }
+
+// ###################### Creating/removing/modifying USERS ###################### //
 
     //Handler for user creation
     public String userHandler(Request req) {
@@ -74,6 +85,38 @@ public class Handlers {
             return false;
         }
     }
+
+// ###################### Creating/deleting/modifying POSTS ###################### //
+
+    // http://localhost:4567/zach3/question/"c c++ structs"/"Can I make a C struct in C++?"
+
+    // Handler for post creation action=newPost
+    public String postCreate(Request req) {
+        String username = req.params(":field1");
+        String type = req.params(":field2");
+        String tags = req.params(":field3");
+        String post = req.params(":field4");
+
+        // checks if the provided username is valid
+        if(!userList.containsKey(username)){
+            System.out.print("USER NOT FOUND\n");
+            return "USER NOT FOUND";
+        }
+
+        // Seperates tags (single string containing commas) into array of strings
+        String delimiter = " ";
+        String[] tagsArray = tags.split(delimiter);
+        // Creates and saves a new post object
+        PostClass newPost = new PostClass(type, username, post, tagsArray);
+        postStore.newPost(newPost);
+
+        String idString = newPost.getId().toString();
+        System.out.print("NEW POST CREATED WITH ID: " + "idString\n");
+        return idString;
+    }
+
+
+// ###################### ANSWERS AND COMMENTS FOR POSTS ###################### //
 
     // Handler to answer coding problems or posts
     public String answerHandler(Request request) {

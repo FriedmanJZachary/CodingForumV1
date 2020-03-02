@@ -1,5 +1,9 @@
 package edu.cooper.ece366.codingForum;
 
+import edu.cooper.ece366.codingForum.store.AnswerStore;
+import edu.cooper.ece366.codingForum.store.AnswerStoreImpl;
+import edu.cooper.ece366.codingForum.store.PostStore;
+import edu.cooper.ece366.codingForum.store.PostStoreImpl;
 import org.apache.log4j.BasicConfigurator;
 import javax.naming.directory.Attributes;
 import java.util.Hashtable;
@@ -8,7 +12,9 @@ import edu.cooper.ece366.codingForum.*;
 
 public class SparkUser {
     public static void main(String[] args) {
-        final Handlers myHandler = new Handlers();
+        PostStore postStore = new PostStoreImpl();
+        AnswerStore answerStore = new AnswerStoreImpl();
+        final Handlers myHandler = new Handlers(postStore, answerStore);
         //Basic Hello World response
         get("/hello", (req, res) -> "Hello World \n");
 
