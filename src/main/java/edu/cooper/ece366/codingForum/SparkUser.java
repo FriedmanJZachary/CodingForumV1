@@ -10,6 +10,8 @@ import java.util.Hashtable;
 import static spark.Spark.*;
 import edu.cooper.ece366.codingForum.*;
 
+// This comment is to check that the merge worked
+
 public class SparkUser {
     public static void main(String[] args) {
         PostStore postStore = new PostStoreImpl();
@@ -57,6 +59,12 @@ public class SparkUser {
                 String handlerReply = myHandler.answerHandler(req);
                 return handlerReply + "\n";
             }
+            //for anwering, format: /newPost/username/type/tags/postcontent
+            if (action.contains("newPost")){
+                String handlerReply = myHandler.postCreate(req);
+                return handlerReply + "\n";
+            }
+
 
             return "Hello: Nothing Happened" + "\n"; //None of the conditions were met, and so nothing was done
         });
