@@ -53,13 +53,19 @@ public class Handlers {
         String newPass = req.params(":field3");
         String name = req.params(":field1");
 
-        if (userList.get(name).pass.equals(oldPass)){
-            userList.get(name).pass = newPass;
-            return "USER PASSWORD CHANGED";
+        if (userList.containsKey(name)) {
+            if (userList.get(name).pass.equals(oldPass)){
+                userList.get(name).pass = newPass;
+                return "USER PASSWORD CHANGED";
+            } else {
+                return "USER AUTHENTICATION REJECTED";
+            }
         } else {
-            return "USER AUTHENTICATION REJECTED";
+            System.out.print("USER NOT FOUND\n");
+            return "USER NOT FOUND";
         }
     }
+
     // Handler to answer coding problems or posts
     public String answerHandler(Request request) {
         String username = getUsername(request);
