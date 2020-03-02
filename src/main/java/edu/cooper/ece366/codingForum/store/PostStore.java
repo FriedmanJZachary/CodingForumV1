@@ -6,7 +6,7 @@ import spark.ResponseTransformer;
 
 public interface PostStore {
 
-//    PostClass getPost(PostClass post);
+    PostClass getPost(Long id);
 
     void addLike(PostClass post, UserClass user);
 

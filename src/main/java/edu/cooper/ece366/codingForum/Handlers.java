@@ -54,7 +54,7 @@ public class Handlers {
         String name = req.params(":field1");
 
         if (userList.containsKey(name)) {
-            if (userList.get(name).pass.equals(oldPass)){
+            if (userList.get(name).pass.equals(oldPass)) {
                 userList.get(name).pass = newPass;
                 return "USER PASSWORD CHANGED";
             } else {
@@ -96,13 +96,10 @@ public class Handlers {
     private String getAnswerType(final Request request) {
         return String.valueOf(request.params(":field3"));
     }
+
     private String getContent(final Request request) {
         return String.valueOf(request.params(":field4"));
     }
-
-
 }
 
-
-
-
+// test comment
