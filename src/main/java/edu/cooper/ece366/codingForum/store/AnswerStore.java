@@ -11,5 +11,5 @@ public interface AnswerStore {
 
     void addAnswer(PostClass post, Answer ans);
 
-    void getAnswers(PostClass post);
+    Answer getAnswers(PostClass post);
 }

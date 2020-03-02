@@ -15,9 +15,13 @@ public class PostStoreImpl implements PostStore {
         this.postList = new HashMap<>();
     }
     public PostStoreImpl(Map<Long, PostClass> postList) {this.postList = postList;}
-//    public PostStoreImpl(PostClass post) {
-//        postList.
-//    }
+    public PostStoreImpl(PostClass post) {
+        postList.put(post.getId(), post);
+    }
+
+    public void newPost(PostClass post){
+        postList.put(post.getId(), post);
+    }
 
     @Override
     public PostClass getPost(Long id) {

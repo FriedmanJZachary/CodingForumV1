@@ -8,6 +8,8 @@ public interface PostStore {
 
     PostClass getPost(Long id);
 
+    void newPost(PostClass post);
+
     void addLike(PostClass post, UserClass user);
 
     void addTag(PostClass post, String tag);

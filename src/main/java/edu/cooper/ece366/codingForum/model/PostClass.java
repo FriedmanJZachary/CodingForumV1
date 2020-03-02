@@ -7,7 +7,7 @@ import java.util.concurrent.atomic.AtomicLong;
 
 public class PostClass {
     // Instance Variables
-    private final Integer type; //coding problem or post/question
+    private final String type; //coding problem or post/question
     private final String author; //UserClass.id
 
     private String post;    //body of text containing the post
@@ -18,7 +18,7 @@ public class PostClass {
     private final Timestamp timestamp;
     private Map<Integer, String> likes = new HashMap<Integer, String>();
 
-    public PostClass(Integer type, String author, String post, String tags[]){
+    public PostClass(String type, String author, String post, String tags[]){
         this.type = type;
         this.author = author;
         this.post = post;
@@ -30,7 +30,7 @@ public class PostClass {
     }
 
     public Long getId() { return id; }
-    public Integer getType() { return type; }
+    public String getType() { return type; }
     public String getAuthor() { return author; }
     public String[] getTags() { return tags; }
     public Timestamp getTime() { return timestamp; }
