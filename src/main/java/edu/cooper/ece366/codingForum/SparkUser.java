@@ -33,9 +33,6 @@ public class SparkUser {
                 String handlerReply = myHandler.passChange(req);
                 return "Hello: Password Change Requested\n" + handlerReply + "\n";
             }
-            else if (action.contains("answer")){
-                //myHandler.answerHandler(req);
-            }
 
             return "Hello: Nothing Happened" + "\n"; //None of the conditions were met, and so nothing was done
         });
@@ -44,6 +41,7 @@ public class SparkUser {
         get("/:action/:field1/:field2/:field3/:field4", (req,res)-> {
             String action = req.params(":action");
             //for answering, format: /answer/username/askpostid/type/content
+            //for replies, content should be in quotes
             if (action.contains("answer")){
                 String handlerReply = myHandler.answerHandler(req);
                 return handlerReply + "\n";

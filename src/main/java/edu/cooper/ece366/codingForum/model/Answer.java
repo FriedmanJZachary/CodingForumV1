@@ -3,6 +3,7 @@ package edu.cooper.ece366.codingForum.model;
 import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicLong;
 public class Answer {
     // Instance Variables
     private final String username;
@@ -24,5 +25,7 @@ public class Answer {
     public String getAnswerType() { return answerType; }
     public String getContent() { return content; }
     public Timestamp getTime() { return timestamp; }
-    public String postAnswer() { return "answered"; } // edit after store is made
+
+    static final AtomicLong NEXT_ID = new AtomicLong(0);
+    final long answerID = NEXT_ID.getAndIncrement();
 }
