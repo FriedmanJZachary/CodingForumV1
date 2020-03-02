@@ -66,8 +66,15 @@ public class Handlers {
         }
     }
 
-    //TESTCOMMENT
-    //ANOTHER COMMENT
+    //Check if user in database
+    public boolean isUser(String name) {
+        if (userList.containsKey(name)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     // Handler to answer coding problems or posts
     public String answerHandler(Request request) {
         String username = getUsername(request);
