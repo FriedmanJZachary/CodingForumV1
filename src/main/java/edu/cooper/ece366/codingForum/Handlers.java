@@ -85,7 +85,9 @@ public class Handlers {
         String answerType = getAnswerType(request); // will be either code or reply
         String content = getContent(request);
         Answer ans = new Answer(username, askPostID, answerType, content);
-        return ans.postAnswer();
+        PostClass post = getPost(askPostID);
+        AnswerStore.addAnswer(post, ans);
+        return AnswerStore.getAnswers();
     }
 
     private String getUsername(final Request request) {
