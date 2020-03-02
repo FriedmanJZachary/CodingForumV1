@@ -11,28 +11,10 @@ import java.util.Map;
 
 public class PostStoreImpl implements PostStore{
 
-    private Map<UserClass, List<PostClass>> userpostMap;
-    private List<PostClass> postList;
+    //private Map<Long id, PostClass> postList = new HashMap<Long, PostClass>;
 
-//    public PostStoreImpl() { this.postList = new ArrayList<>(); }
-//    public PostStoreImpl(List<PostClass> postList) {
-//        this.postList = postList;
-//    }
 
-    public PostStoreImpl(){ this.userpostMap = new HashMap<>();}
-    public PostStoreImpl(Map<UserClass, List<PostClass>> userpostMap){ this.userpostMap = userpostMap; }
 
-    public PostStoreImpl(PostClass newPost){
-//        userpostMap.put( newPost.getId(), newPost);
-
-    }
-
-//Map<String, List<User>> usersByCountry = listOfUsers.stream().collect(Collectors.groupingBy(User::getCountry));
-
-//    public PostClass getPost(PostClass post){
-//        return new PostClass();
-//    }
-// We need to figure out where we are getting these posts from
 
     public void addLike(PostClass post, UserClass user){
         throw new UnsupportedOperationException("Error: addLike not implemented yet\n");
