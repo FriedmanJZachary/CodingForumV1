@@ -116,16 +116,18 @@ public class Handlers {
     }
 
 
-// ###################### ANSWERS AND COMMENTS FOR POSTS ###################### //
-
+    // ###################### ANSWERS AND COMMENTS FOR POSTS ###################### //
     // Handler to answer coding problems or posts
     public String answerHandler(Request request) {
         String username = getUsername(request);
+        if (!isUser(username)) {return "User does not exist!";}
         Long askPostID = getAskPostID(request);
         String answerType = getAnswerType(request); // will be either code or reply
         String content = getContent(request);
         Answer ans = new Answer(username, askPostID, answerType, content);
-        return ans.postAnswer();
+        PostClass post = postStore.getPost(askPostID);
+        answerStore.addAnswer(post, ans);
+        return answerStore.getAnswers(post);
     }
 
     private String getUsername(final Request request) {

@@ -26,7 +26,8 @@ public class AnswerStoreImpl implements AnswerStore {
     }
 
     @Override
-    public Answer getAnswers(PostClass post) {
-        throw new UnsupportedOperationException("Error: editPost not implemented yet\n");
+    public String getAnswers(PostClass post) {
+        //return new Answer(answerList.getOrDefault(post, Map.of()));
+        return "Succesfully replied to Post " + post.getId();
     }
 }
