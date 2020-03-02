@@ -13,8 +13,11 @@ public class Handlers {
     public String userHandler(Request req) {
         String pass = req.params(":field2");
         String name = req.params(":field1");
+        String firstName = req.params(":field3");
+        String lastName = req.params(":field4");
+        String email = req.params(":field5");
         if (!userList.containsKey(name)) {
-            UserClass newU = new UserClass(name, pass);
+            UserClass newU = new UserClass(name, pass, firstName, lastName, email);
             userList.put(name, newU);
             System.out.print(userList.get(name).userName + "\n");
             return "NEW USER CREATED";
