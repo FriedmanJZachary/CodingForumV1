@@ -2,11 +2,21 @@ package edu.cooper.ece366.codingForum;
 import edu.cooper.ece366.codingForum.model.UserClass;
 import edu.cooper.ece366.codingForum.model.PostClass;
 import edu.cooper.ece366.codingForum.model.Answer;
+import edu.cooper.ece366.codingForum.store.PostStore;
+import edu.cooper.ece366.codingForum.store.AnswerStore;
 import spark.Request;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Handlers {
+
+    private final PostStore postStore;
+    private final AnswerStore answerStore;
+    public Handlers(PostStore postStore, AnswerStore answerStore) {
+        this.postStore = postStore;
+        this.answerStore = answerStore;
+    }
+
     Map<String, UserClass> userList = new HashMap<String, UserClass>();
 
     //Handler for user creation
@@ -81,13 +91,14 @@ public class Handlers {
     // Handler to answer coding problems or posts
     public String answerHandler(Request request) {
         String username = getUsername(request);
+        if (!isUser(username)) {return "User does not exist!";}
         Long askPostID = getAskPostID(request);
         String answerType = getAnswerType(request); // will be either code or reply
         String content = getContent(request);
         Answer ans = new Answer(username, askPostID, answerType, content);
-        PostClass post = getPost(askPostID);
+        PostClass post = PostStore.getPost(askPostID);
         AnswerStore.addAnswer(post, ans);
-        return AnswerStore.getAnswers();
+        return AnswerStore.getAnswers(post);
     }
 
     private String getUsername(final Request request) {

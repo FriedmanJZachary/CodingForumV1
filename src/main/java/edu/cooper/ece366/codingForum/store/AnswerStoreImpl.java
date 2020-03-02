@@ -22,13 +22,11 @@ public class AnswerStoreImpl implements AnswerStore {
 
     @Override
     public void addAnswer(PostClass post, Answer ans) {
-        Map<Item, Integer> postAnswerList = answerList.getOrDefault(post, new HashMap<>());
-        postAnswerList.put(ans);
-        answerList.put(post, postAnswerList);
+        answerList.put(post, ans);
     }
 
     @Override
     public Answer getAnswers(PostClass post) {
-        return new Answer(Answer.getOrDefault(post, Map.of()));
+        return new Answer(answerList.getOrDefault(post, Map.of()));
     }
 }
