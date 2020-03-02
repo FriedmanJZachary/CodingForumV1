@@ -1,5 +1,7 @@
 package edu.cooper.ece366.codingForum;
 import edu.cooper.ece366.codingForum.model.UserClass;
+import edu.cooper.ece366.codingForum.model.PostClass;
+import edu.cooper.ece366.codingForum.model.Answer;
 import spark.Request;
 import java.util.HashMap;
 import java.util.Map;
@@ -58,22 +60,30 @@ public class Handlers {
             return "USER AUTHENTICATION REJECTED";
         }
     }
+    // Handler to answer coding problems or posts
+    public String answerHandler(Request request) {
+        String username = getUsername(request);
+        Long askPostID = getAskPostID(request);
+        String answerType = getAnswerType(request); // will be either code or reply
+        String content = getContent(request);
+        Answer ans = new Answer(username, askPostID, answerType, content);
+        return ans.postAnswer();
+    }
 
-//    public Answer createAnswer(Request request) {
-//        Long answerPostID = getAnswerPostID();
-//        Long askPostID = getAskPostID(request);
-//        String codeFilePath = getCodeFilePath(request);
-//        Answer ans = new Answer(answerPostID, askPostID, codeFilePath);
-//        return service.createAnswer(ans);
-//    }
-//
-//    private Long getAskPostID(final Request request) {
-//        returnlong.valueOf(request.params(":askpostid"));
-//    }
-//
-//    private String getCodeFilePath(final Request request) {
-//        returnstring.valueOf(request.params(":codefilepath"));
-//    }
+    private String getUsername(final Request request) {
+        return String.valueOf(request.params(":field1"));
+    }
+
+    private Long getAskPostID(final Request request) {
+        return Long.valueOf(request.params(":field2"));
+    }
+
+    private String getAnswerType(final Request request) {
+        return String.valueOf(request.params(":field3"));
+    }
+    private String getContent(final Request request) {
+        return String.valueOf(request.params(":field4"));
+    }
 
 
 }
