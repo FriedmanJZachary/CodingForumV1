@@ -35,7 +35,7 @@ public class Handlers {
 
             //Check user authentication
             if (currentUser.pass.equals(pass)) {
-                userList.remove(currentUser);
+                userList.remove(name); //Bug fixed
                 System.out.print(userList + "\n");
                 return "USER DELETED";
             } else {
