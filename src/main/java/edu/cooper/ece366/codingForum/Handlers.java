@@ -91,6 +91,7 @@ public class Handlers {
     // http://localhost:4567/zach3/question/"c c++ structs"/"Can I make a C struct in C++?"
 
     // Handler for post creation action=newPost
+    // Format: /newPost/username/type/tag1-tag2-.../"content of post"
     public String postCreate(Request req) {
         String username = req.params(":field1");
         String type = req.params(":field2");
@@ -104,15 +105,16 @@ public class Handlers {
         }
 
         // Seperates tags (single string containing commas) into array of strings
-        String delimiter = " ";
+        String delimiter = "-";
         String[] tagsArray = tags.split(delimiter);
         // Creates and saves a new post object
         PostClass newPost = new PostClass(type, username, post, tagsArray);
         postStore.newPost(newPost);
 
         String idString = newPost.getId().toString();
-        System.out.print("NEW POST CREATED WITH ID: " + "idString\n");
-        return idString;
+        System.out.print("NEW POST CREATED WITH ID: " + idString + "\n");
+
+        return "NEW POST CREATED WITH ID: " + idString;
     }
 
 
