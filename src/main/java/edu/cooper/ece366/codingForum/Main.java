@@ -12,7 +12,7 @@ import edu.cooper.ece366.codingForum.*;
 
 // This comment is to check that the merge worked
 
-public class SparkUser {
+public class Main {
     public static void main(String[] args) {
         PostStore postStore = new PostStoreImpl();
         AnswerStore answerStore = new AnswerStoreImpl();
