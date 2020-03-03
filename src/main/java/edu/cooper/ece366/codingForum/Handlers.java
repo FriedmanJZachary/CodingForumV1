@@ -124,8 +124,8 @@ public class Handlers {
         PostClass post = postStore.getPost(id);
         postStore.addTag(post, tags);
 
-        System.out.print("Tags: " + tags + " Changed in POST with id " + idstr );
-        return("Tags: " + tags + " Changed in POST with id " + idstr );
+        System.out.print("Tags: " + tags + " Changed in POST with id " + idstr +"\n" );
+        return("Tags: " + tags + " Changed in POST with id " + idstr +"\n" );
     }
 
 
