@@ -4,6 +4,7 @@ import edu.cooper.ece366.codingForum.model.PostClass;
 import edu.cooper.ece366.codingForum.model.UserClass;
 import spark.ResponseTransformer;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,8 +36,12 @@ public class PostStoreImpl implements PostStore {
     }
 
     @Override
-    public void addTag(PostClass post, String tag){
-        throw new UnsupportedOperationException("Error: addTag not implemented yet\n");
+    public void addTag(PostClass post, String newtag){
+        String tags[] = post.getTags();
+        tags = Arrays.copyOf(tags, tags.length +1);
+        tags[tags.length] = newtag;
+
+        post.setTags(tags);
     }
 
     @Override

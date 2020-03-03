@@ -1,4 +1,5 @@
 package edu.cooper.ece366.codingForum;
+
 import edu.cooper.ece366.codingForum.model.UserClass;
 import edu.cooper.ece366.codingForum.model.PostClass;
 import edu.cooper.ece366.codingForum.model.Answer;
@@ -88,8 +89,6 @@ public class Handlers {
 
 // ###################### Creating/deleting/modifying POSTS ###################### //
 
-    // http://localhost:4567/zach3/question/"c c++ structs"/"Can I make a C struct in C++?"
-
     // Handler for post creation action=newPost
     // Format: /newPost/username/type/tag1-tag2-.../"content of post"
     public String postCreate(Request req) {
@@ -115,6 +114,22 @@ public class Handlers {
         System.out.print("NEW POST CREATED WITH ID: " + idString + "\n");
 
         return "NEW POST CREATED WITH ID: " + idString;
+    }
+
+    // Handler for post creation action=editTags
+    // Format: /addTags/postID/tags
+    public String postAddTags(Request req) {
+        String idstr = req.params(":field1");
+        String tags = req.params(":field2");
+        System.out.print("Adding Tag to: " + idstr);
+
+        Long id = Long.parseLong(idstr);
+
+        PostClass post = postStore.getPost(id);
+        postStore.addTag(post, tags);
+
+        System.out.print("Tags: " + tags + " Changed in POST with id " + idstr );
+        return("Tags: " + tags + " Changed in POST with id " + idstr );
     }
 
 

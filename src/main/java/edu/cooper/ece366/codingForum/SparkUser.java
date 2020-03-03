@@ -27,10 +27,15 @@ public class SparkUser {
             if (action.contains("newUser")){
                 String handlerReply = myHandler.userHandler(req);
                 return "Hello: New User Requested\n" + handlerReply + "\n";
-            } else if (action.contains("removeUser")){
+            }
+            else if (action.contains("removeUser")){
                 System.out.print("removeUSer selected\n");
                 String handlerReply = myHandler.userRemover(req);
                 return "Hello: User Deletion Requested\n" + handlerReply + "\n";
+            }
+            else if (action.contains("addTags")){
+                String handlerReply = myHandler.postAddTags(req);
+                return handlerReply;
             }
             return "Hello: Nothing Happened" + "\n"; //None of the conditions were met, and so nothing was done
         });

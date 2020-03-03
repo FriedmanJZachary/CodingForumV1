@@ -35,5 +35,6 @@ public class PostClass {
     public String[] getTags() { return tags; }
     public Timestamp getTime() { return timestamp; }
 
+    public void setTags(String[] tags) {this.tags = tags;}
 
 }
