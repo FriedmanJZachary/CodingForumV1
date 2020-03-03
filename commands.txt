@@ -1,0 +1,9 @@
+GET http://localhost:4567/newUser/zach2/pass2
+GET http://localhost:4567/removeUser/zach2/pass2
+GET http://localhost:4567/removeUser/zach2/pass2
+GET http://localhost:4567/newUser/zach1/pass1
+GET http://localhost:4567/passChange/zach2/fkdek/fdljfa
+GET http://localhost:4567/passChange/zach1/fkdek/fdljfa
+GET http://localhost:4567/passChange/zach1/pass1/pass2
+GET http://localhost:4567/answer/zach1/347/reply/"You need to indent your first line"
+GET http://localhost:4567/zach3/question/"c c++ structs"/"Can I make a C struct in C++?"
