@@ -6,4 +6,5 @@ GET http://localhost:4567/passChange/zach2/fkdek/fdljfa
 GET http://localhost:4567/passChange/zach1/fkdek/fdljfa
 GET http://localhost:4567/passChange/zach1/pass1/pass2
 GET http://localhost:4567/answer/zach1/347/reply/"You need to indent your first line"
-GET http://localhost:4567/zach3/question/"c c++ structs"/"Can I make a C struct in C++?"
+GET http://localhost:4567/newPost/zach3/question/c-c++/"Can I make a C struct in C++?"
+GET http://localhost:4567/addTags/0/structs

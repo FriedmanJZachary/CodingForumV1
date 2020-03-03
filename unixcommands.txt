@@ -1,0 +1,9 @@
+curl localhost:4567/newUser/zach2/pass2
+curl localhost:4567/removeUser/zach2/pass2
+curl localhost:4567/removeUser/zach2/pass2
+curl localhost:4567/newUser/zach1/pass1
+curl localhost:4567/passChange/zach2/fkdek/fdljfa
+curl localhost:4567/passChange/zach1/fkdek/fdljfa
+curl localhost:4567/passChange/zach1/pass1/pass2
+curl localhost:4567/newPost/zach1/question/c-c++/"Cstructs"
+curl localhost:4567/addTags/0/structs
