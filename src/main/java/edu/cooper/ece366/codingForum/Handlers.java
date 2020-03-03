@@ -117,15 +117,14 @@ public class Handlers {
     public String postAddTags(Request req) {
         String idstr = req.params(":field1");
         String tags = req.params(":field2");
-        System.out.print("Adding Tag to: " + idstr);
 
         Long id = Long.parseLong(idstr);
 
         PostClass post = postStore.getPost(id);
         postStore.addTag(post, tags);
 
-        System.out.print("Tags: " + tags + " to POST with id " + idstr +"\n" );
-        return("Tags: " + tags + " to POST with id " + idstr +"\n" );
+        System.out.print("Tag '" + tags + "' added to POST with ID: " + idstr +"\n" );
+        return("Tag '" + tags + "' added to POST with ID: " + idstr +"\n" );
     }
 
 
