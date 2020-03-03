@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Handlers {
-    Map<String, UserClass> userList = new HashMap<String, UserClass>();
+    Map<String, UserClass> userList = new HashMap<>();
     private final PostStore postStore;
     private final AnswerStore answerStore;
 
@@ -80,11 +80,7 @@ public class Handlers {
 
     //Check if user in database
     public boolean isUser(String name) {
-        if (userList.containsKey(name)) {
-            return true;
-        } else {
-            return false;
-        }
+        return userList.containsKey(name);
     }
 
 // ###################### Creating/deleting/modifying POSTS ###################### //
