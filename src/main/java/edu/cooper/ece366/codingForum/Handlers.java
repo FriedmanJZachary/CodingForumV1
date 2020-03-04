@@ -156,7 +156,7 @@ public class Handlers {
         Long askPostID = Long.valueOf(request.params(":field1"));
         PostClass post = postStore.getPost(askPostID);
         List<Answer> answerList = answerStore.getAnswers(post);
-        String answerContent = "";
+        String answerContent = "\nAnswers to Post: " + post.getBody() + "\n";
         for (int i = 0; i < answerList.size(); i++) {
             Answer answer = answerList.get(i);
             answerContent = answerContent + answer.getUsername() + ": " + answer.getContent() + "\n\n";
