@@ -12,7 +12,7 @@ import edu.cooper.ece366.codingForum.*;
 
 // This comment is to check that the merge worked
 
-public class Main {
+public class SparkUser {
     public static void main(String[] args) {
         PostStore postStore = new PostStoreImpl();
         AnswerStore answerStore = new AnswerStoreImpl();
@@ -23,12 +23,19 @@ public class Main {
         //Determine what to do with 2-field string
         get("/:action/:field1", (req,res)-> {
             String action = req.params(":action");
+<<<<<<< HEAD:src/main/java/edu/cooper/ece366/codingForum/Main.java
             //Call some handler method depending on the specified action
             if (action.contains("returnPost")){
                 String handlerReply = myHandler.returnPost(req);
                 return "Hello: Post Requested\n" + handlerReply + "\n";
             }
             return "Hello: Nothing Happened" + "\n"; //None of the conditions were met, and so nothing was done
+=======
+            if (action.contains("getAnswers")){
+                return myHandler.getAnswersHandler(req);
+            }
+            else { return "Hello: Nothing Happened" + "\n";}
+>>>>>>> Jason:src/main/java/edu/cooper/ece366/codingForum/SparkUser.java
         });
 
         //Determine what to do with 3-field string
@@ -80,8 +87,6 @@ public class Main {
                 String handlerReply = myHandler.postCreate(req);
                 return "Hello: New Post Requested\n" + handlerReply + "\n";
             }
-
-
             return "Hello: Nothing Happened" + "\n"; //None of the conditions were met, and so nothing was done
         });
 

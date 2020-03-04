@@ -8,6 +8,8 @@ import edu.cooper.ece366.codingForum.store.PostStore;
 import spark.Request;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
+import java.util.ArrayList;
 
 public class Handlers {
     Map<String, UserClass> userList = new HashMap<>();
@@ -127,6 +129,7 @@ public class Handlers {
         return("TAG '" + tags + "' ADDED TO POST WITH ID: " + idstr +"\n" );
     }
 
+<<<<<<< HEAD
 
     public String returnPost(Request req) {
         String idstr = req.params(":field1");
@@ -143,27 +146,30 @@ public class Handlers {
         Long askPostID = getAskPostID(request);
         String answerType = getAnswerType(request); // will be either code or reply
         String content = getContent(request);
+=======
+    // ###################### ANSWERS AND COMMENTS FOR POSTS ###################### //
+    // Handler to answer coding problems or posts
+    public String answerHandler(Request request) {
+        String username = String.valueOf(request.params(":field1"));
+        if (!isUser(username)) {return "User does not exist!";}
+        Long askPostID = Long.valueOf(request.params(":field2"));
+        String answerType = String.valueOf(request.params(":field3")); // will be either code or reply
+        String content = String.valueOf(request.params(":field4"));
+>>>>>>> Jason
         Answer ans = new Answer(username, askPostID, answerType, content);
         PostClass post = postStore.getPost(askPostID);
-        answerStore.addAnswer(post, ans);
-        return answerStore.getAnswers(post);
+        return answerStore.addAnswer(post, ans);
     }
 
-    private String getUsername(final Request request) {
-        return String.valueOf(request.params(":field1"));
-    }
-
-    private Long getAskPostID(final Request request) {
-        return Long.valueOf(request.params(":field2"));
-    }
-
-    private String getAnswerType(final Request request) {
-        return String.valueOf(request.params(":field3"));
-    }
-
-    private String getContent(final Request request) {
-        return String.valueOf(request.params(":field4"));
+    public String getAnswersHandler(Request request) {
+        Long askPostID = Long.valueOf(request.params(":field1"));
+        PostClass post = postStore.getPost(askPostID);
+        List<Answer> answerList = answerStore.getAnswers(post);
+        String answerContent = "";
+        for (int i = 0; i < answerList.size(); i++) {
+            Answer answer = answerList.get(i);
+            answerContent = answerContent + answer.getUsername() + ": " + answer.getContent() + "\n\n";
+        }
+        return answerContent;
     }
 }
-
-// test comment
