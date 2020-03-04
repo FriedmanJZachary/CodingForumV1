@@ -99,7 +99,7 @@ public class Handlers {
             return "USER NOT FOUND";
         }
 
-        // Seperates tags (single string containing commas) into array of strings
+        // Separates tags (single string containing commas) into array of strings
         String delimiter = "-";
         String[] tagsArray = tags.split(delimiter);
         // Creates and saves a new post object
@@ -124,7 +124,7 @@ public class Handlers {
         postStore.addTag(post, tags);
 
         System.out.print("Tag '" + tags + "' added to POST with ID: " + idstr +"\n" );
-        return("Tag '" + tags + "' added to POST with ID: " + idstr +"\n" );
+        return("TAG '" + tags + "' ADDED TO POST WITH ID: " + idstr +"\n" );
     }
 
 
@@ -139,7 +139,7 @@ public class Handlers {
     // Handler to answer coding problems or posts
     public String answerHandler(Request request) {
         String username = getUsername(request);
-        if (!isUser(username)) {return "User does not exist!";}
+        if (!isUser(username)) {return "USER NOT FOUND";}
         Long askPostID = getAskPostID(request);
         String answerType = getAnswerType(request); // will be either code or reply
         String content = getContent(request);

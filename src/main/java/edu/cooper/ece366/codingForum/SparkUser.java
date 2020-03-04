@@ -73,12 +73,12 @@ public class SparkUser {
             //for answering, format: /answer/username/askpostid/type/content
             if (action.contains("answer")){
                 String handlerReply = myHandler.answerHandler(req);
-                return handlerReply + "\n";
+                return "Hello: Answer Requested\n" + handlerReply + "\n";
             }
-            //for anwering, format: /newPost/username/type/tags/postcontent
+            //for answering, format: /newPost/username/type/tags/postcontent
             if (action.contains("newPost")){
                 String handlerReply = myHandler.postCreate(req);
-                return handlerReply + "\n";
+                return "Hello: New Post Requested\n" + handlerReply + "\n";
             }
 
 
