@@ -6,10 +6,12 @@ import edu.cooper.ece366.codingForum.model.UserClass;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
+import java.util.ArrayList;
 
 public interface AnswerStore {
 
-    void addAnswer(PostClass post, Answer ans);
+    String addAnswer(PostClass post, Answer ans);
 
-    String getAnswers(PostClass post);
+    List<Answer> getAnswers(PostClass post);
 }

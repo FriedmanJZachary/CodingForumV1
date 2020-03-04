@@ -12,13 +12,22 @@ import edu.cooper.ece366.codingForum.*;
 
 // This comment is to check that the merge worked
 
-public class Main {
+public class SparkUser {
     public static void main(String[] args) {
         PostStore postStore = new PostStoreImpl();
         AnswerStore answerStore = new AnswerStoreImpl();
         final Handlers myHandler = new Handlers(postStore, answerStore);
         //Basic Hello World response
         get("/hello", (req, res) -> "Hello World \n");
+
+        //Determine what to do with 2-field string
+        get("/:action/:field1", (req,res)-> {
+            String action = req.params(":action");
+            if (action.contains("getAnswers")){
+                return myHandler.getAnswersHandler(req);
+            }
+            else { return "Hello: Nothing Happened" + "\n";}
+        });
 
         //Determine what to do with 3-field string
         get("/:action/:field1/:field2", (req,res)-> {
@@ -69,8 +78,6 @@ public class Main {
                 String handlerReply = myHandler.postCreate(req);
                 return handlerReply + "\n";
             }
-
-
             return "Hello: Nothing Happened" + "\n"; //None of the conditions were met, and so nothing was done
         });
 
