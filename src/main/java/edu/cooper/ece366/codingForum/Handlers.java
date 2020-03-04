@@ -128,6 +128,13 @@ public class Handlers {
     }
 
 
+    public String returnPost(Request req) {
+        String idstr = req.params(":field1");
+        Long id = Long.parseLong(idstr);
+        PostClass post = postStore.getPost(id);
+        return post.getBody();
+    }
+
     // ###################### ANSWERS AND COMMENTS FOR POSTS ###################### //
     // Handler to answer coding problems or posts
     public String answerHandler(Request request) {

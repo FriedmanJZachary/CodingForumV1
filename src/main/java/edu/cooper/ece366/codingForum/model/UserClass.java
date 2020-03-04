@@ -1,4 +1,3 @@
-
 package edu.cooper.ece366.codingForum.model;
 import edu.cooper.ece366.codingForum.*;
 import java.util.ArrayList;

@@ -20,6 +20,17 @@ public class SparkUser {
         //Basic Hello World response
         get("/hello", (req, res) -> "Hello World \n");
 
+        //Determine what to do with 2-field string
+        get("/:action/:field1", (req,res)-> {
+            String action = req.params(":action");
+            //Call some handler method depending on the specified action
+            if (action.contains("returnPost")){
+                String handlerReply = myHandler.returnPost(req);
+                return "Hello: Post Requested\n" + handlerReply + "\n";
+            }
+            return "Hello: Nothing Happened" + "\n"; //None of the conditions were met, and so nothing was done
+        });
+
         //Determine what to do with 3-field string
         get("/:action/:field1/:field2", (req,res)-> {
             String action = req.params(":action");

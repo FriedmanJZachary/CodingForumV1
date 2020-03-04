@@ -37,4 +37,6 @@ public class PostClass {
 
     public void setTags(String[] tags) {this.tags = tags;}
 
+    public String getBody() {return post;}
+
 }
