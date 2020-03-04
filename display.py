@@ -1,7 +1,7 @@
 import subprocess
 import time
 
-file = open('commands.txt', 'r')
+file = open('unixcommands.txt', 'r')
 
 for line in file:
 	print("\n\nCalling Command: " + line)
