@@ -99,7 +99,7 @@ public class Handlers {
             return "USER NOT FOUND";
         }
 
-        // Seperates tags (single string containing commas) into array of strings
+        // Separates tags (single string containing commas) into array of strings
         String delimiter = "-";
         String[] tagsArray = tags.split(delimiter);
         // Creates and saves a new post object
@@ -117,23 +117,29 @@ public class Handlers {
     public String postAddTags(Request req) {
         String idstr = req.params(":field1");
         String tags = req.params(":field2");
-        System.out.print("Adding Tag to: " + idstr);
 
         Long id = Long.parseLong(idstr);
 
         PostClass post = postStore.getPost(id);
         postStore.addTag(post, tags);
 
-        System.out.print("Tags: " + tags + " Changed in POST with id " + idstr );
-        return("Tags: " + tags + " Changed in POST with id " + idstr );
+        System.out.print("Tag '" + tags + "' added to POST with ID: " + idstr +"\n" );
+        return("TAG '" + tags + "' ADDED TO POST WITH ID: " + idstr +"\n" );
     }
 
+
+    public String returnPost(Request req) {
+        String idstr = req.params(":field1");
+        Long id = Long.parseLong(idstr);
+        PostClass post = postStore.getPost(id);
+        return post.getBody();
+    }
 
     // ###################### ANSWERS AND COMMENTS FOR POSTS ###################### //
     // Handler to answer coding problems or posts
     public String answerHandler(Request request) {
         String username = getUsername(request);
-        if (!isUser(username)) {return "User does not exist!";}
+        if (!isUser(username)) {return "USER NOT FOUND";}
         Long askPostID = getAskPostID(request);
         String answerType = getAnswerType(request); // will be either code or reply
         String content = getContent(request);
