@@ -1,11 +1,11 @@
-curl localhost:4567/newUser/Zach/weakpass
+curl localhost:4567/newUser/Zach/weakpass/Zach/Lusterman/email
 curl localhost:4567/removeUser/Zach/weakpass
 curl localhost:4567/removeUser/Zach/weakpass
-curl localhost:4567/newUser/Theo/strongpass
+curl localhost:4567/newUser/Theo/strongpass/Theo/Lusterman/email
 curl localhost:4567/passChange/Theo/wrongpass/strongerpass
 curl localhost:4567/passChange/Theo/strongpass/strongerpass
-curl localhost:4567/newUser/Zach/strongpass
-curl localhost:4567/newUser/Jason/strongpass
+curl localhost:4567/newUser/Zach/strongpass/Zach/Lusterman/email
+curl localhost:4567/newUser/Jason/strongpass/Jason/Lusterman/email
 curl localhost:4567/newPost/Zachary/question/c-c++/Pleasehelp
 curl localhost:4567/newPost/Zach/question/c-c++/Given_an_array_of_integers,return_indices_of_the_two_numbers_such_that_they_add_up_to_a_specific_target.
 curl localhost:4567/answer/Jason/0/reply/Just_brute_force_it_by_using_two_for_loops.
