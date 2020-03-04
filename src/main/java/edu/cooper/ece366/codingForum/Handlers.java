@@ -1,5 +1,4 @@
 package edu.cooper.ece366.codingForum;
-
 import edu.cooper.ece366.codingForum.model.UserClass;
 import edu.cooper.ece366.codingForum.model.PostClass;
 import edu.cooper.ece366.codingForum.model.Answer;
@@ -25,10 +24,14 @@ public class Handlers {
 
     //Handler for user creation
     public String userHandler(Request req) {
-        String pass = req.params(":field2");
         String name = req.params(":field1");
+        String pass = req.params(":field2");
+        String firstName = req.params(":field2");
+        String lastName = req.params(":field1");
+        String email = req.params(":field2");
+
         if (!userList.containsKey(name)) {
-            UserClass newU = new UserClass(name, pass);
+            UserClass newU = new UserClass(name, pass, firstName, lastName, email);
             userList.put(name, newU);
             System.out.print(userList.get(name).userName + "\n");
             return "NEW USER CREATED";

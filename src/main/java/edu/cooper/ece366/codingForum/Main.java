@@ -85,5 +85,20 @@ public class Main {
             }
             return "Hello: Nothing Happened" + "\n"; //None of the conditions were met, and so nothing was done
         });
+
+
+        //Determine what to do with 6-field string
+        get("/:action/:field1/:field2/:field3/:field4/:field5", (req,res)-> {
+            String action = req.params(":action");
+            //Call some handler method depending on the specified action
+            if (action.contains("newUser")){
+                String handlerReply = myHandler.userHandler(req);
+                return "Hello: New User Requested\n" + handlerReply + "\n";
+            }
+            return "Hello: Nothing Happened" + "\n"; //None of the conditions were met, and so nothing was done
+        });
+
+
+
     }
 }
