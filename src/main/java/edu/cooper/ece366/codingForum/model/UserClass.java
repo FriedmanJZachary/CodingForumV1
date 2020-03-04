@@ -17,25 +17,13 @@ public class UserClass {
     }
 
     //Name display method
-    public String getName()
-    {
-        return userName;
-    }
+    public String getName() { return userName; }
 
-    public void addPost(Long post)
-    {
-        postList.add(post);
-    }
+    public void addPost(Long post) { postList.add(post); }
 
-    public void removePost(Long post)
-    {
-        postList.remove(post);
-    }
-
-    public ArrayList<Long> returnPost(Long post)
-    {
-        return postList;
-    }
+    public void removePost(Long post) { postList.remove(post); }
+    
+    public ArrayList<Long> returnPost(Long post) { return postList; }
 
 
 }
