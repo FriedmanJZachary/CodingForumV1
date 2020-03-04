@@ -128,9 +128,6 @@ public class Handlers {
         System.out.print("Tag '" + tags + "' added to POST with ID: " + idstr +"\n" );
         return("TAG '" + tags + "' ADDED TO POST WITH ID: " + idstr +"\n" );
     }
-
-<<<<<<< HEAD
-
     public String returnPost(Request req) {
         String idstr = req.params(":field1");
         Long id = Long.parseLong(idstr);
@@ -138,15 +135,7 @@ public class Handlers {
         return post.getBody();
     }
 
-    // ###################### ANSWERS AND COMMENTS FOR POSTS ###################### //
-    // Handler to answer coding problems or posts
-    public String answerHandler(Request request) {
-        String username = getUsername(request);
-        if (!isUser(username)) {return "USER NOT FOUND";}
-        Long askPostID = getAskPostID(request);
-        String answerType = getAnswerType(request); // will be either code or reply
-        String content = getContent(request);
-=======
+
     // ###################### ANSWERS AND COMMENTS FOR POSTS ###################### //
     // Handler to answer coding problems or posts
     public String answerHandler(Request request) {
@@ -155,7 +144,6 @@ public class Handlers {
         Long askPostID = Long.valueOf(request.params(":field2"));
         String answerType = String.valueOf(request.params(":field3")); // will be either code or reply
         String content = String.valueOf(request.params(":field4"));
->>>>>>> Jason
         Answer ans = new Answer(username, askPostID, answerType, content);
         PostClass post = postStore.getPost(askPostID);
         return answerStore.addAnswer(post, ans);
