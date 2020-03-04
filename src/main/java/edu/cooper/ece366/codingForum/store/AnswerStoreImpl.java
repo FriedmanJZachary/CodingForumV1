@@ -26,9 +26,9 @@ public class AnswerStoreImpl implements AnswerStore {
         ArrayList<Answer> answers = answerList.getOrDefault(post, new ArrayList<>());
         answers.add(ans);
         answerList.put(post,answers);
-        returnString = returnString + "Successfully answered post " + post.getId();
+        returnString = returnString + "SUCCESFFULY ANSWERED POST WITH ID: " + post.getId();
         if (ans.getAnswerType().contains("code")) {
-            returnString = returnString + "\nSorry, our built-in compiler is not yet implemented";
+            returnString = returnString + "\nSORRY, OUR BUILT-IN COMPILER IS NOT YET IMPLEMENTED.";
         }
         return returnString;
     }
