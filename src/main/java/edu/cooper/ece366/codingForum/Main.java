@@ -38,11 +38,7 @@ public class Main {
         get("/:action/:field1/:field2", (req,res)-> {
             String action = req.params(":action");
             //Call some handler method depending on the specified action
-            if (action.contains("newUser")){
-                String handlerReply = myHandler.userHandler(req);
-                return "Hello: New User Requested\n" + handlerReply + "\n";
-            }
-            else if (action.contains("removeUser")){
+            if (action.contains("removeUser")){
                 System.out.print("removeUSer selected\n");
                 String handlerReply = myHandler.userRemover(req);
                 return "Hello: User Deletion Requested\n" + handlerReply + "\n";
