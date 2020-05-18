@@ -1,9 +1,14 @@
 #Coding Forum
 
-This project is built to run on IntelliJ, and utilizes the following software:
+NOTE: THIS PROJECT HAS SINCE BEEN MOVED, AND MAY BE FOUND AT:
+https://github.com/jkurian49/LusterCode/tree/master/src/main/java/edu/cooper/ee/ece366/LusterCode
+
+This project is an online coding forum and interview prepearation tool. It is built to run on IntelliJ and utilizes the following software:
 
 1) Spark, for processing http requests
 2) Maven, for project organization
+3) MySQL, for database managements
+4) VanillaJS, for frontend development
 
 IntelliJ may be downloaded from https://www.jetbrains.com/idea/download/
 
